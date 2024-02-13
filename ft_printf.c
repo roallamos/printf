@@ -6,7 +6,7 @@
 /*   By: rodralva <rodralva@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:56:15 by rodralva          #+#    #+#             */
-/*   Updated: 2024/02/09 14:44:11 by rodralva         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:45:35 by rodralva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,14 @@ int	ft_printf(char const *format, ...)
 			write(1, &format[i], 1);
 			ret++;
 		}
-		else
+		else if (format[i + 1])
 		{
 			ft_format(&format[i], vargs, &ret);
 			i++;
 		}
 		i++;
 	}
+	va_end(vargs);
 	return (ret);
 }
 
@@ -74,7 +75,7 @@ int	ft_printf(char const *format, ...)
 //	int aux, aux2;
 //	mem = (int *)malloc(8);
 //	aux = printf("og %x", -1);
-//	aux2 = ft_printf("%x", -1);
+//	aux2 = ft_printf("%d%", -1);
 //	printf("Numero BIEN: %i, nuestro Num: %i\n", aux, aux2);
 //	free (mem);
 //	return (0);
